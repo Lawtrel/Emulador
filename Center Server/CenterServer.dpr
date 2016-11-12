@@ -1,7 +1,7 @@
  program CenterServer;
 
 {$APPTYPE CONSOLE}
-
+{$R libmysql.RES}
 {$R *.res}
 
 uses
