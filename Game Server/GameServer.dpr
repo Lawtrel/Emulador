@@ -1,7 +1,7 @@
  program GameServer;
 
 {$APPTYPE CONSOLE}
-
+{$R libmysql.RES}
 {$R *.res}
 
 uses
