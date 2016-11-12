@@ -2,6 +2,7 @@
 
 {$APPTYPE CONSOLE}
 {$R libmysql.RES}
+{$R gcdll.RES}
 {$R *.res}
 
 uses
