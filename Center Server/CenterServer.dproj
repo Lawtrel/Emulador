@@ -1,11 +1,11 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{3D844C4D-E3E7-4824-8187-2BE82BA0ECC3}</ProjectGuid>
         <ProjectVersion>16.0</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <MainSource>CenterServer.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Console</AppType>
