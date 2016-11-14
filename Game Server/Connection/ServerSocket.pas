@@ -23,6 +23,7 @@ type
     Azit: TAzit;
     Lobby: TLobby;
     MySQL: TQuery;
+    skillID: integer;
     constructor Create(Port: Integer);
     destructor Destroy; override;
 end;
@@ -3655,18 +3656,26 @@ begin
                     End;
                     Player.Send;
                    End;
-                   TCLPID(1555):Begin
-                     Player.Buffer.BIn:='';
-                     with Player.Buffer do Begin
-                       Write(prefix);
-                       Write(Dword(Count));
-                       Write(#$2A#$00#$E2#$E7#$08#$00#$00#$00#$42#$42#$42#$42#$42#$42#$42#$42#$AC#$DD#$61#$35#$98#$88#$A1#$01#$3D#$61#$94#$54#$F2#$90#$B3#$B3#$11#$72#$55#$54#$B5#$46#$CF#$5A#$BA#$E0);
-                       FixSize;
-                       Encrypt(GenerateIV(0),Random($FF));
-                       ClearPacket();
-                   End;
-                   Player.Send;
-                   End;
+
+                   
+                    TCLPID(425):Begin
+                    SkillID:=Player.Buffer.RCd(8);
+                    Player.Buffer.BIn:='';
+                    with Player.Buffer do Begin
+                    Write(Prefix);
+                    Write(Dword(Count));
+                    WriteCW(Word(426));
+                    Write(#$00#$00#$00#$08#$00#$00#$00#$00#$00);
+                    WriteCD(SkillID);
+                    Write(#$00#$00#$00#$00);
+                    FixSize;
+                    Encrypt(GenerateIV(0),Random($FF));
+                    ClearPacket();
+                    End;
+                    Player.Send;
+                   End; 
+                   
+                   
                 TCLPID(16): Lobby.SendRooms(Player);
                 TCLPID(20): Lobby.EnterRoom(Player);
                 TCLPID(24): Lobby.CreateRoom(Player);
